@@ -50,6 +50,7 @@ public class CreateMenuServlet extends HttpServlet {
 		for(Meal m: menu) {
 			System.out.println(m.getId() + m.getName());
 		}
+		//テスト
 	}
 
 	/**
