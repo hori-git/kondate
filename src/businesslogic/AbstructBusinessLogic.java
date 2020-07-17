@@ -1,12 +1,12 @@
 package businesslogic;
 
-import dao.DAOFactory;
 import dao.DAOManager;
+import factory.Factory;
 
 public abstract class AbstructBusinessLogic {
 
 	//daofactoryクラスを取得
-	DAOFactory factory = new DAOFactory();
+	Factory factory = new Factory();
 
 	//DAOManagerのインスタンスを取得する
 	DAOManager dao = factory.getDao("oracle", "kondateApp");

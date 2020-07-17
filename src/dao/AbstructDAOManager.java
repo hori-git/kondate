@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public abstract class AbstructDAOManager {
 
+	//設定ファイルに出す
 	//メンバ
 	Connection conn = null;
 	final String URL = "jdbc:mysql://localhost:3306/KondateApp";

@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import obj.Meal;
+import obj.DTOMeal;
 
 public class DefaultDAOManager extends AbstructDAOManager implements DAOManager {
 
@@ -16,10 +16,10 @@ public class DefaultDAOManager extends AbstructDAOManager implements DAOManager 
 	}
 
 	@Override
-	public ArrayList<Meal> getWeeklyMeals() {
+	public ArrayList<DTOMeal> getWeeklyMeals() {
 		//メンバ
 		ResultSet result_set = null;
-		ArrayList<Meal> weeklyMenu = new ArrayList<Meal>();
+		ArrayList<DTOMeal> weeklyMenu = new ArrayList<DTOMeal>();
 
 		try {
 			//TODO Taskの方で引数に使用しているのはなにか聞く
@@ -28,7 +28,7 @@ public class DefaultDAOManager extends AbstructDAOManager implements DAOManager 
 
 			//取得したResultSetからMeal配列オブジェクトを生成する
 			while(result_set.next()) {
-				Meal meal = new Meal();
+				DTOMeal meal = new DTOMeal();
 					meal.setId(result_set.getInt("id"));
 					meal.setName(result_set.getString("name"));
 					meal.setBreakfast(result_set.getBoolean("is_breakfast"));
