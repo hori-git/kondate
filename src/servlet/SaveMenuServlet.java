@@ -32,8 +32,14 @@ public class SaveMenuServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		try {
 		KondateController controller = new KondateController();
 		controller.saveMenuService(request, response);
+		System.out.println("SaveMenuServlet処理完了");
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 	/**

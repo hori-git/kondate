@@ -2,6 +2,7 @@ package businesslogic;
 
 import java.util.ArrayList;
 
+import obj.DTOMenu;
 import obj.JSONMeal;
 
 public interface BussinessLogic {
@@ -10,5 +11,5 @@ public interface BussinessLogic {
 	ArrayList<JSONMeal> createMenu();
 
 	//一週間の献立をDBへ保存するロジック
-	void saveMenu(ArrayList<JSONMeal> JSONMeal);
+	void saveMenu(DTOMenu[]  DTOMenus);
 }

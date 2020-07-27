@@ -10,8 +10,8 @@ public class JSONMeal {
 	@JsonProperty("name")
 	private String name;
 
-	@JsonProperty("meal_type")
-	private String mealType;
+	@JsonProperty("meal_time")
+	private String mealTime;
 
 	public int getId() {
 		return id;
@@ -29,12 +29,14 @@ public class JSONMeal {
 		this.name = name;
 	}
 
-	public String getMealType() {
-		return mealType;
+	public String getMealTime() {
+		return mealTime;
 	}
 
-	public void setMealType(String mealType) {
-		this.mealType = mealType;
+	public void setMealTime(String mealTime) {
+		this.mealTime = mealTime;
 	}
+
+
 
 }

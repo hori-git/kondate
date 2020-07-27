@@ -3,6 +3,7 @@ package businesslogic;
 import java.util.ArrayList;
 
 import obj.DTOMeal;
+import obj.DTOMenu;
 import obj.JSONMeal;
 
 public class DefaultBusinesslogic extends AbstructBusinessLogic implements BussinessLogic{
@@ -22,13 +23,13 @@ public class DefaultBusinesslogic extends AbstructBusinessLogic implements Bussi
 				jsonMeal.setId(DTOMenu.get(i).getId());
 				jsonMeal.setName(DTOMenu.get(i).getName());
 				if(DTOMenu.get(i).isBreakfast() && breakfastCounter<7) {
-					jsonMeal.setMealType("morning");
+					jsonMeal.setMealTime("morning");
 					breakfastCounter++;
 				}else if (DTOMenu.get(i).isLunch() && lunchCounter<7) {
-					jsonMeal.setMealType("lunch");
+					jsonMeal.setMealTime("lunch");
 					lunchCounter++;
 				}else if (DTOMenu.get(i).isDinner()) {
-					jsonMeal.setMealType("dinner");
+					jsonMeal.setMealTime("dinner");
 				}
 				menu.add(jsonMeal);
 			}
@@ -40,8 +41,7 @@ public class DefaultBusinesslogic extends AbstructBusinessLogic implements Bussi
 	}
 
 	@Override
-	public void saveMenu(ArrayList<JSONMeal> JSONMeal) {
-		// TODO 自動生成されたメソッド・スタブ
-
+	public void saveMenu(DTOMenu[] menu) {
+			dao.saveMenu(menu);
 	}
 }
