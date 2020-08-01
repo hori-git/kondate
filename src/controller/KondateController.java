@@ -13,6 +13,7 @@ import businesslogic.BussinessLogic;
 import factory.Factory;
 import obj.DTOMenu;
 import obj.JSONMeal;
+import obj.JSONMenu;
 import service.Converter;
 
 public class KondateController {
@@ -37,13 +38,21 @@ public class KondateController {
 	}
 
 	public void saveMenuService(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		//TODO　リクエストボディからの取得　献立内のブックマークをもとに実装
 		BufferedReader br = new BufferedReader(request.getReader());
 		String jsonText = br.readLine();
 		ObjectMapper mapper = new ObjectMapper();
 		DTOMenu[] menu = mapper.readValue(jsonText, DTOMenu[].class);
 
 		logic.saveMenu(menu);
+	}
 
+	public void getMenuService(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Converter converter = new Converter();
+		String str = request.getParameter("user_id");
+        int userId = Integer.parseInt(str);
+		ArrayList<JSONMenu> menu = logic.getMenu(userId);
+		String respoceJson = converter.object2json(menu);
+		//JSONの出力
+		response.getWriter().write(respoceJson);
 	}
 }

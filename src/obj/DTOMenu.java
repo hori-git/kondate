@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DTOMenu {
 
 	@JsonFormat
-    (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Timestamp date;
 
 	@JsonProperty("meal_time")

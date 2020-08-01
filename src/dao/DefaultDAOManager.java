@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import obj.DTOMeal;
 import obj.DTOMenu;
+import obj.JSONMenu;
 
 public class DefaultDAOManager extends AbstructDAOManager implements DAOManager {
 
@@ -25,7 +26,7 @@ public class DefaultDAOManager extends AbstructDAOManager implements DAOManager 
 
 		try {
 			//TODO Taskの方で引数に使用しているのはなにか聞く
-			pre_statement = conn.prepareStatement(GET_WEEKLY_MENU);
+			pre_statement = conn.prepareStatement(GET_WEEKLY_MEAL);
 			result_set = pre_statement.executeQuery();
 
 			//取得したResultSetからMeal配列オブジェクトを生成する
@@ -70,6 +71,35 @@ public class DefaultDAOManager extends AbstructDAOManager implements DAOManager 
 		} finally {
 			close(conn);
 		}
+	}
 
+	@Override
+	public ArrayList<JSONMenu> getMenu(int userId) {
+		// TODO 自動生成されたメソッド・スタブ
+		//メンバ
+		ResultSet result_set = null;
+		ArrayList<JSONMenu> menu = new ArrayList<JSONMenu>();
+		try {
+			pre_statement = conn.prepareStatement(GET_MENU);
+			pre_statement.setInt(1, userId);
+			result_set = pre_statement.executeQuery();
+
+			while(result_set.next()) {
+				JSONMenu meal = new JSONMenu();
+				meal.setId(result_set.getInt("id"));
+				meal.setName(result_set.getString("name"));
+				meal.setMealTime(result_set.getString("meal_time"));
+				meal.setMealDate(result_set.getTimestamp("date"));
+				menu.add(meal);
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+
+		return menu;
 	}
 }

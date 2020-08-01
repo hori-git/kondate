@@ -15,11 +15,14 @@ public abstract class AbstructDAOManager {
 
 	//sql文
 	//一週間の献立取得
-	final String GET_WEEKLY_MENU = "(SELECT * FROM meal WHERE is_breakfast = true ORDER BY RAND() LIMIT 7) UNION ALL (SELECT * FROM meal WHERE is_lunch = true ORDER BY RAND() LIMIT 7)"
+	final String GET_WEEKLY_MEAL = "(SELECT * FROM meal WHERE is_breakfast = true ORDER BY RAND() LIMIT 7) UNION ALL (SELECT * FROM meal WHERE is_lunch = true ORDER BY RAND() LIMIT 7)"
 			+
 			"UNION ALL (SELECT * FROM meal WHERE is_dinner = true ORDER BY RAND() LIMIT 7)";
 
 	final String SAVE_MENU = "INSERT INTO menu VALUES (?,?,?,?)";
+
+	final String GET_MENU = "SELECT menu.date , menu.meal_time , meal.id , meal.name FROM menu INNER JOIN meal ON menu.meal_id = meal.id"
+			+ " WHERE menu.user_id = ?  ORDER BY menu.date;";
 
 	public AbstructDAOManager() {
 		try {

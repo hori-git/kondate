@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import obj.DTOMeal;
 import obj.DTOMenu;
 import obj.JSONMeal;
+import obj.JSONMenu;
 
 public class DefaultBusinesslogic extends AbstructBusinessLogic implements BussinessLogic{
 
@@ -17,7 +18,7 @@ public class DefaultBusinesslogic extends AbstructBusinessLogic implements Bussi
 		try {
 			ArrayList<DTOMeal> DTOMenu = dao.getWeeklyMeals();
 			//DB取得したDTOMenuをJSONMealへ変換
-			//別クラスか別メソッドへ移譲する必要あるかも？？？
+			//変換処理は、別クラスか別メソッドへ移譲する必要あるかも？？？
 			for (int i = 0; i < DTOMenu.size(); i++) {
 				JSONMeal jsonMeal = new JSONMeal();
 				jsonMeal.setId(DTOMenu.get(i).getId());
@@ -43,5 +44,12 @@ public class DefaultBusinesslogic extends AbstructBusinessLogic implements Bussi
 	@Override
 	public void saveMenu(DTOMenu[] menu) {
 			dao.saveMenu(menu);
+	}
+
+	@Override
+	public ArrayList<JSONMenu> getMenu(int userId) {
+		// TODO 自動生成されたメソッド・スタブ
+		ArrayList<JSONMenu> menu = dao.getMenu(userId);
+		return menu;
 	}
 }
