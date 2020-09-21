@@ -36,7 +36,4 @@ public class JSONMeal {
 	public void setMealTime(String mealTime) {
 		this.mealTime = mealTime;
 	}
-
-
-
 }

@@ -13,7 +13,7 @@ import controller.KondateController;
 /**
  * Servlet implementation class GetMenuServlet
  */
-@WebServlet("/GetMenuServlet")
+@WebServlet("/getMenuServlet")
 public class GetMenuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
