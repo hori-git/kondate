@@ -1,3 +1,3 @@
 # kondate
 
-Jenkins動作確認
+Jenkins動作して〜〜〜
